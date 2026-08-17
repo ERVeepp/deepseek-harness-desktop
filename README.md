@@ -26,6 +26,14 @@ pnpm start
 
 首次启动会自动安装 DSH（默认 `latest`），装好后拉起 Web UI。
 
+## 打包
+
+```bash
+pnpm run dist   # 产出 release/ 下的 exe 安装包；dmg 需在 macOS 上执行同命令
+```
+
+详见 [`docs/开发指南.md`](docs/开发指南.md) §11 打包发布。
+
 ## 配置（环境变量，前缀 `DSH_DESKTOP_`）
 
 | 变量 | 默认 | 说明 |
