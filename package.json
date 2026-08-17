@@ -1,0 +1,55 @@
+{
+  "name": "deepseek-harness-desktop",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness 桌面壳：内置 Node 运行时 + DSH 版本管理 + 本地进程托管",
+  "author": "DeepSeek Harness Desktop",
+  "private": true,
+  "repository": "https://github.com/ERVeepp/deepseek-harness-desktop",
+  "main": "dist/main/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "tsc -p tsconfig.json && electron .",
+    "dist": "pnpm run build && electron-builder"
+  },
+  "dependencies": {
+    "pnpm": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "electron": "^37.0.0",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.7.0"
+  },
+  "build": {
+    "appId": "com.dsh.desktop",
+    "productName": "DeepSeek Harness Desktop",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "renderer/**/*",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "node_modules/pnpm/**"
+    ],
+    "mac": {
+      "target": ["dmg"],
+      "category": "public.app-category.developer-tools"
+    },
+    "win": {
+      "signAndEditExecutable": false,
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
